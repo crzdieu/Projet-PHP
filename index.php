@@ -1,3 +1,7 @@
+<?php 
+$page = intval($_GET['page']) - 1;
+$source = simplexml_load_file('source.xml');
+?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
@@ -26,7 +30,7 @@
       <!-- Page Content -->
       <div id="page-content-wrapper">
         <div class="container-fluid">
-
+          <?= $source->page[$page]->content  ?>
         </div>
       </div>
     </div>
