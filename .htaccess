@@ -1,0 +1,6 @@
+RewriteRule ^([0-3]).html$ index.php?page [L]
+RewriteRule ^2.html$ index.php?2 [L]
+RewriteRule ^3.html$ index.php?3 [L]
+RewriteRule ^4.html$ index.php?4 [L]
+
+ErrorDocument 404 /404.php
