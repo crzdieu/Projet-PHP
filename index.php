@@ -1,3 +1,6 @@
+<?php 
+$test = $_GET['page'];
+?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
@@ -27,6 +30,8 @@
       <div id="page-content-wrapper">
         <div class="container-fluid">
 
+          
+          
         </div>
       </div>
     </div>
