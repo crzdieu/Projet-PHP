@@ -1,7 +1,75 @@
-<?php 
-$page = intval($_GET['page'] - 1);
+<?php
+$regexFirstname = '%^([A-Z]{1}[a-zÀ-ÖØ-öø-ÿ]+)([- ]{1}[A-Z]{1}[a-zÀ-ÖØ-öø-ÿ]+){0,1}$%';
+$regexPhoneNumber = '#^[0][1-9][0-9]{8}$#';
+$regexMail = '#^([\w._-]+@[\w.-_]+[.][a-z]+)$#';
+$regexText = '#^([A-Z a-zÀ-ÖØ-öø-ÿ].+)?$#';
+$regexCity = '#^([A-Z]{1}[a-zÀ-ÖØ-öø-ÿ -]+)$#';
+if (isset($_GET['page'])) {
+  $page = intval($_GET['page'] - 1);
+}else{
+  $page = 0;
+}
 $source = simplexml_load_file('source.xml');
+$formErrors = array();
 ?>
+
+<?php
+if (count($_POST) > 0) {
+
+  if (!empty($_POST['your-name'])) {
+    if (preg_match($regexFirstname, $_POST['your-name'])) {
+      $lastName = htmlspecialchars($_POST['your-name']);
+    } else {
+      $formErrors['your-name'] = 'Vôtre nom de famille est incorrect';
+    }
+  } else {
+    $formErrors['your-name'] = 'Veuillez renseigner votre nom de famille';
+  }
+
+  if (!empty($_POST['your-email'])) {
+    if (preg_match($regexMail, $_POST['your-email'])) {
+      $email = htmlspecialchars($_POST['your-email']);
+    } else {
+      $formErrors['your-email'] = 'Vôtre adresse Mail est incorrect';
+    }
+  }
+
+  if (!empty($_POST['your-tel-615'])) {
+    if (preg_match($regexPhoneNumber, $_POST['your-tel-615'])) {
+      $phoneNumber = htmlspecialchars($_POST['your-tel-615']);
+    } else {
+      $formErrors['your-tel-615'] = 'Vôtre numéro est incorrect';
+    }
+  } else {
+    $formErrors['your-tel-615'] = 'Veuillez renseigner votre numéro de téléphone';
+  }
+
+  if (!empty($_POST['your-subject'])) {
+    if (preg_match($regexText, $_POST['your-subject'])) {
+      $subject = htmlspecialchars($_POST['your-subject']);
+    } else {
+      $formErrors['your-subject'] = 'Vôtre sujet est incorrect';
+    }
+  }
+
+  if (!empty($_POST['your-ville'])) {
+    if (preg_match($regexCity, $_POST['your-ville'])) {
+      $phoneNumber = htmlspecialchars($_POST['your-ville']);
+    } else {
+      $formErrors['your-ville'] = 'Vôtre ville est incorrect';
+    }
+  }
+
+  if (!empty($_POST['your-message'])) {
+    if (preg_match($regexText, $_POST['your-message'])) {
+      $message = htmlspecialchars($_POST['your-message']);
+    } else {
+      $formErrors['your-message'] = 'Vôtre ne correspond pas';
+    }
+  }
+}
+
+ ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
