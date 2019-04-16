@@ -78,13 +78,13 @@ if (count($_POST) > 0) {
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-    <title>phpProject</title>
+    <title><?= $source->page[$page]->title ?></title>
   </head>
   <body>
     <div class="d-flex" id="wrapper">
       <!-- Sidebar -->
       <div class="bg-light border-right" id="sidebar-wrapper">
-        <div class="sidebar-heading">Menu</div>
+        <div class="sidebar-heading"><?= $source->page[$page]->menu ?></div>
         <div class="list-group list-group-flush">
           <a href="1.html" class="list-group-item list-group-item-action bg-light">Acceuil</a>
           <a href="2.html" class="list-group-item list-group-item-action bg-light">Qui sommes nous?</a>
@@ -96,7 +96,7 @@ if (count($_POST) > 0) {
       <!-- Page Content -->
       <div id="page-content-wrapper">
         <div class="container-fluid">
-          <?= $source->page[$page]->content  ?>
+          <?= $source->page[$page]->content ?>
         </div>
       </div>
     </div>
