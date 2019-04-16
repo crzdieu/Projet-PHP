@@ -1,11 +1,13 @@
 <?php 
-<<<<<<< HEAD
-$test = $_GET['page'];
-=======
-$page = intval($_GET['page']) - 1;
 $source = simplexml_load_file('source.xml');
->>>>>>> 0ec8a9f23535925e31edd1afd3cfc13adac524cd
+
+if (isset($_GET['page'])) {
+  $page = intval($_GET['page'] - 1); 
+}else{
+  $page = 0; 
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
@@ -32,13 +34,7 @@ $source = simplexml_load_file('source.xml');
       <!-- Page Content -->
       <div id="page-content-wrapper">
         <div class="container-fluid">
-<<<<<<< HEAD
-
-          
-          
-=======
           <?= $source->page[$page]->content  ?>
->>>>>>> 0ec8a9f23535925e31edd1afd3cfc13adac524cd
         </div>
       </div>
     </div>
