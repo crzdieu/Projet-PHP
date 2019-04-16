@@ -4,7 +4,11 @@ $regexPhoneNumber = '#^[0][1-9][0-9]{8}$#';
 $regexMail = '#^([\w._-]+@[\w.-_]+[.][a-z]+)$#';
 $regexText = '#^([A-Z a-zÀ-ÖØ-öø-ÿ].+)?$#';
 $regexCity = '#^([A-Z]{1}[a-zÀ-ÖØ-öø-ÿ -]+)$#';
-$page = intval($_GET['page']) - 1;
+if (isset($_GET['page'])) {
+  $page = intval($_GET['page'] - 1);
+}else{
+  $page = 0;
+}
 $source = simplexml_load_file('source.xml');
 $formErrors = array();
 ?>
